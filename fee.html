@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>弁護士費用・料金表 | 東京板橋法律事務所</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d; --navy-mid: #1a3260; --gold: #b8963e; --gold-light: #d4b06a;
+    --cream: #f5f2ec; --cream-dark: #ede9e0; --white: #ffffff;
+    --text: #1a1a2e; --text-light: #5a6478;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.8; }
+
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,31,61,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,150,62,0.3); padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: baseline; gap: 12px; text-decoration: none; }
+  .logo-jp { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: 0.12em; }
+  .logo-en { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; color: var(--gold-light); letter-spacing: 0.2em; font-weight: 300; }
+  nav { display: flex; gap: 36px; align-items: center; }
+  nav a { font-size: 0.78rem; color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.15em; font-family: 'Noto Serif JP', serif; transition: color 0.3s; position: relative; }
+  nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+  nav a:hover { color: var(--gold-light); }
+  nav a:hover::after { transform: scaleX(1); }
+  .btn-nav-contact { background: var(--gold); color: var(--navy) !important; padding: 10px 24px; font-weight: 500; }
+  .btn-nav-contact::after { display: none !important; }
+  .btn-nav-contact:hover { background: var(--gold-light) !important; }
+
+  .page-hero { margin-top: 72px; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 80px 10%; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(42,74,138,0.4) 0%, transparent 60%); }
+  .page-hero-label { font-family: 'Cormorant Garamond', serif; font-size: 0.78rem; color: var(--gold); letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 16px; position: relative; }
+  .page-hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .page-hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--white); letter-spacing: 0.1em; position: relative; }
+
+  .breadcrumb { padding: 14px 10%; background: var(--cream); font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.08em; display: flex; gap: 8px; align-items: center; border-bottom: 1px solid var(--cream-dark); }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+
+  /* LAYOUT */
+  .page-wrap { max-width: 960px; margin: 0 auto; padding: 72px 5% 100px; }
+
+  /* NOTICE */
+  .notice { display: flex; gap: 16px; align-items: flex-start; background: var(--cream); border-left: 3px solid var(--gold); padding: 20px 24px; margin-bottom: 64px; font-size: 0.84rem; color: var(--text-light); line-height: 1.9; letter-spacing: 0.04em; }
+  .notice-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+
+  /* FEE TYPE CARDS */
+  .fee-type-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 72px; }
+  .fee-type-card { border: 1px solid var(--cream-dark); padding: 28px 20px; text-align: center; position: relative; transition: box-shadow 0.3s, transform 0.3s; }
+  .fee-type-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); }
+  .fee-type-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,31,61,0.08); }
+  .fee-type-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold); line-height: 1; margin-bottom: 10px; opacity: 0.7; }
+  .fee-type-name { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 600; color: var(--navy); letter-spacing: 0.1em; margin-bottom: 10px; }
+  .fee-type-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.8; letter-spacing: 0.03em; }
+
+  /* CATEGORY TABS */
+  .cat-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 48px; position: sticky; top: 72px; background: var(--white); padding: 16px 0; z-index: 10; border-bottom: 1px solid var(--cream-dark); }
+  .cat-tab { padding: 8px 18px; border: 1px solid var(--cream-dark); background: var(--white); font-family: 'Noto Serif JP', serif; font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.08em; cursor: pointer; transition: all 0.25s; white-space: nowrap; }
+  .cat-tab:hover { border-color: var(--gold); color: var(--navy); }
+  .cat-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  /* SECTION HEADING */
+  .sec-heading { display: flex; align-items: center; margin-bottom: 24px; padding-top: 8px; }
+  .sec-heading-bar { width: 4px; height: 28px; background: linear-gradient(to bottom, var(--gold), var(--gold-light)); margin-right: 16px; flex-shrink: 0; }
+  .sec-heading-en { font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.35em; text-transform: uppercase; display: block; margin-bottom: 3px; }
+  .sec-heading-jp { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); letter-spacing: 0.1em; display: block; }
+
+  /* TABLE */
+  .table-section { margin-bottom: 48px; display: none; }
+  .table-section.active { display: block; }
+  .fee-table { width: 100%; border-collapse: collapse; }
+  .fee-table thead tr { background: var(--navy); }
+  .fee-table thead th { font-family: 'Noto Serif JP', serif; font-size: 0.78rem; font-weight: 400; color: rgba(255,255,255,0.85); letter-spacing: 0.12em; padding: 13px 18px; text-align: left; }
+  .fee-table tbody tr { border-bottom: 1px solid #eae6dc; transition: background 0.2s; }
+  .fee-table tbody tr:hover { background: #faf8f4; }
+  .fee-table tbody tr:last-child { border-bottom: 2px solid var(--cream-dark); }
+  .fee-table td { padding: 14px 18px; font-size: 0.855rem; color: var(--text); letter-spacing: 0.04em; vertical-align: middle; }
+  .td-name { font-family: 'Noto Serif JP', serif; font-weight: 600; color: var(--navy); font-size: 0.875rem; }
+  .td-amount { font-family: 'Noto Sans JP', sans-serif; font-weight: 500; color: var(--navy-mid); font-size: 0.875rem; }
+  .td-note { font-size: 0.78rem; color: var(--text-light); }
+  .table-note { margin-top: 10px; font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.04em; line-height: 1.9; padding-left: 12px; border-left: 2px solid var(--cream-dark); }
+
+  /* SUBSECTION */
+  .subsec-title { font-family: 'Noto Serif JP', serif; font-size: 0.88rem; font-weight: 600; color: var(--navy); letter-spacing: 0.1em; margin: 28px 0 12px; padding-left: 12px; border-left: 2px solid var(--gold-light); }
+
+  .section-divider { height: 1px; background: var(--cream-dark); margin: 48px 0; }
+
+  /* LEGAL AID */
+  .legal-aid { background: var(--navy); padding: 36px 44px; margin-bottom: 48px; display: flex; gap: 24px; align-items: flex-start; }
+  .legal-aid-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+  .legal-aid-title { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 600; color: var(--gold-light); letter-spacing: 0.1em; margin-bottom: 10px; }
+  .legal-aid-text { font-size: 0.84rem; color: rgba(255,255,255,0.65); line-height: 2.1; letter-spacing: 0.04em; }
+
+  /* JISSPI (実費) */
+  .jisspi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 16px; }
+  .jisspi-item { background: var(--cream); padding: 16px 18px; }
+  .jisspi-label { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.15em; font-family: 'Cormorant Garamond', serif; margin-bottom: 6px; }
+  .jisspi-val { font-size: 0.83rem; color: var(--navy); line-height: 1.7; }
+
+  /* CTA */
+  .cta-wrap { text-align: center; padding-top: 8px; }
+  .cta-btn { display: inline-block; background: var(--gold); color: var(--navy); padding: 18px 56px; font-family: 'Noto Serif JP', serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.2em; text-decoration: none; transition: all 0.3s; }
+  .cta-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,150,62,0.25); }
+  .cta-sub { font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.1em; margin-top: 16px; }
+
+  footer { background: #080f1e; padding: 40px 10%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(184,150,62,0.15); flex-wrap: wrap; gap: 16px; }
+  .footer-logo { display: flex; align-items: baseline; gap: 12px; }
+  .footer-logo .logo-jp { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en">Tokyo Itabashi Law Office</span>
+  </a>
+  <nav>
+    <a href="index.html#practice">取扱業務</a>
+    <a href="index.html#about">事務所紹介</a>
+    <a href="fee.html">費用</a>
+    <a href="faq.html">よくある質問</a>
+    <a href="index.html#access">アクセス</a>
+    <a href="index.html#contact" class="btn-nav-contact">相談予約</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <p class="page-hero-label">Fee Schedule</p>
+  <h1 class="page-hero-title">弁護士費用・料金表</h1>
+</div>
+<div class="breadcrumb">
+  <a href="index.html">トップ</a> ＞ 弁護士費用・料金表
+</div>
+
+<div class="page-wrap">
+
+  <div class="notice">
+    <span class="notice-icon">📋</span>
+    <span>弁護士費用は旧日弁連報酬基準に準じた当事務所の報酬規程に基づき算定いたします。事案の難易・複雑さにより増減することがあります。詳細は初回相談（10,000円・税込）にてご説明いたします。消費税は別途申し受けます。</span>
+  </div>
+
+  <!-- 費用の種類 -->
+  <div class="sec-heading">
+    <div class="sec-heading-bar"></div>
+    <div>
+      <span class="sec-heading-en">Types of Fee</span>
+      <span class="sec-heading-jp">弁護士費用の種類</span>
+    </div>
+  </div>
+  <div class="fee-type-grid">
+    <div class="fee-type-card">
+      <p class="fee-type-num">01</p>
+      <p class="fee-type-name">相談料</p>
+      <p class="fee-type-desc">法律相談にかかる費用。当事務所は初回10,000円（税込）です。</p>
+    </div>
+    <div class="fee-type-card">
+      <p class="fee-type-num">02</p>
+      <p class="fee-type-name">着手金</p>
+      <p class="fee-type-desc">依頼時にお支払いいただく費用。結果に関わらず発生します。</p>
+    </div>
+    <div class="fee-type-card">
+      <p class="fee-type-num">03</p>
+      <p class="fee-type-name">報酬金</p>
+      <p class="fee-type-desc">解決後、得られた経済的利益に応じてお支払いいただく費用。</p>
+    </div>
+    <div class="fee-type-card">
+      <p class="fee-type-num">04</p>
+      <p class="fee-type-name">実費</p>
+      <p class="fee-type-desc">裁判所への申立費用・郵便代・交通費など手続きに実際にかかる費用です。</p>
+    </div>
+  </div>
+
+  <!-- カテゴリタブ -->
+  <div class="cat-tabs">
+    <button class="cat-tab active" data-target="cat-consult">相談料</button>
+    <button class="cat-tab" data-target="cat-civil">民事事件（基本）</button>
+    <button class="cat-tab" data-target="cat-family">離婚・家族</button>
+    <button class="cat-tab" data-target="cat-inheritance">相続・遺言</button>
+    <button class="cat-tab" data-target="cat-debt">債務整理・破産</button>
+    <button class="cat-tab" data-target="cat-realestate">不動産</button>
+    <button class="cat-tab" data-target="cat-damage">損害賠償・交通事故・労災</button>
+    <button class="cat-tab" data-target="cat-criminal">刑事・少年</button>
+    <button class="cat-tab" data-target="cat-corporate">企業法務</button>
+    <button class="cat-tab" data-target="cat-other">その他手数料</button>
+    <button class="cat-tab" data-target="cat-jisspi">実費について</button>
+  </div>
+
+  <!-- 相談料 -->
+  <div class="table-section active" id="cat-consult">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Consultation</span><span class="sec-heading-jp">相談料</span></div></div>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">種別</th><th style="width:30%">料金</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">初回法律相談</td><td class="td-amount">10,000円（税込）</td><td class="td-note">60分程度</td></tr>
+        <tr><td class="td-name">一般法律相談（2回目以降）</td><td class="td-amount">30分ごとに5,000円〜</td><td class="td-note">税別</td></tr>
+        <tr><td class="td-name">書面による鑑定</td><td class="td-amount">10万円〜30万円</td><td class="td-note">複雑・特殊な場合は協議</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 民事事件基本基準 -->
+  <div class="table-section" id="cat-civil">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Civil Cases</span><span class="sec-heading-jp">民事事件（基本基準）</span></div></div>
+    <p class="subsec-title">① 訴訟事件・非訟事件・家事審判事件・行政事件・仲裁事件</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:38%">経済的利益の額</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">300万円以下</td><td class="td-amount">8%（最低10万円）</td><td class="td-amount">16%</td></tr>
+        <tr><td class="td-name">300万円超〜3,000万円以下</td><td class="td-amount">5%＋9万円</td><td class="td-amount">10%＋18万円</td></tr>
+        <tr><td class="td-name">3,000万円超〜3億円以下</td><td class="td-amount">3%＋69万円</td><td class="td-amount">6%＋138万円</td></tr>
+        <tr><td class="td-name">3億円超</td><td class="td-amount">2%＋369万円</td><td class="td-amount">4%＋738万円</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 事件の内容により30%の範囲内で増減額できます。</p>
+
+    <p class="subsec-title">② 調停事件・示談交渉事件</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:38%">種別</th><th colspan="2">着手金・報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">調停・示談交渉</td><td colspan="2" class="td-amount">上記①の各額の3分の2（最低10万円）</td></tr>
+        <tr><td class="td-name">調停・示談→訴訟移行時の追加着手金</td><td colspan="2" class="td-amount">①の額の2分の1</td></tr>
+      </tbody>
+    </table>
+
+    <p class="subsec-title">③ 督促手続・契約締結交渉事件</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:38%">経済的利益の額</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">300万円以下</td><td class="td-amount">2%（最低5万円）</td><td class="td-amount">①の2分の1</td></tr>
+        <tr><td class="td-name">300万円超〜3,000万円以下</td><td class="td-amount">1%＋3万円</td><td class="td-amount">①の2分の1</td></tr>
+        <tr><td class="td-name">3,000万円超〜3億円以下</td><td class="td-amount">0.5%＋18万円</td><td class="td-amount">①の2分の1</td></tr>
+        <tr><td class="td-name">3億円超</td><td class="td-amount">0.3%＋78万円</td><td class="td-amount">①の2分の1</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 報酬金は金銭等の具体的な回収をしたときに限り請求できます。</p>
+
+    <p class="subsec-title">④ 手形・小切手訴訟事件</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:38%">経済的利益の額</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">300万円以下</td><td class="td-amount">4%（最低5万円）</td><td class="td-amount">8%</td></tr>
+        <tr><td class="td-name">300万円超〜3,000万円以下</td><td class="td-amount">2.5%＋4.5万円</td><td class="td-amount">5%＋9万円</td></tr>
+        <tr><td class="td-name">3,000万円超〜3億円以下</td><td class="td-amount">1.5%＋34.5万円</td><td class="td-amount">3%＋69万円</td></tr>
+        <tr><td class="td-name">3億円超</td><td class="td-amount">1%＋184.5万円</td><td class="td-amount">2%＋369万円</td></tr>
+      </tbody>
+    </table>
+
+    <p class="subsec-title">⑤ 保全命令申立事件・民事執行事件</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">種別</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">保全命令申立事件</td><td class="td-amount">①の2分の1（最低10万円）</td><td class="td-amount">①の4分の1〜3分の1</td></tr>
+        <tr><td class="td-name">民事執行事件</td><td class="td-amount">①の2分の1（最低10万円）</td><td class="td-amount">①の4分の1</td></tr>
+        <tr><td class="td-name">執行停止事件</td><td class="td-amount">①の2分の1</td><td class="td-amount">①の4分の1</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 本案事件と併せて受任したときでも本案事件とは別に受けることができます。</p>
+  </div>
+
+  <!-- 離婚・家族 -->
+  <div class="table-section" id="cat-family">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Divorce / Family</span><span class="sec-heading-jp">離婚・家族問題</span></div></div>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">離婚協議（交渉）</td><td class="td-amount">20万円〜50万円</td><td class="td-amount">20万円〜50万円</td></tr>
+        <tr><td class="td-name">離婚調停</td><td class="td-amount">20万円〜50万円</td><td class="td-amount">20万円〜50万円</td></tr>
+        <tr><td class="td-name">離婚訴訟</td><td class="td-amount">30万円〜60万円</td><td class="td-amount">30万円〜60万円</td></tr>
+        <tr><td class="td-name">養育費・婚姻費用（調停）</td><td class="td-amount">民事基本基準の3分の2</td><td class="td-amount">民事基本基準の3分の2</td></tr>
+        <tr><td class="td-name">財産分与・慰謝料請求</td><td class="td-amount">民事基本基準による（別途加算）</td><td class="td-amount">民事基本基準による</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 財産分与・慰謝料等の財産的請求を伴う場合は、上記に加えて民事基本基準により算定した額を加算します。<br>
+    ※ 離婚交渉から調停を受任するときの着手金は上記の2分の1。離婚調停から訴訟を受任するときの着手金は上記の2分の1。<br>
+    ※ 依頼者の経済的資力、事案の複雑さ・手数の繁簡等を考慮し増減額することができます。</p>
+
+    <p class="subsec-title">境界に関する事件</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">種別</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">境界確定訴訟・調停・示談</td><td class="td-amount">30万円〜60万円</td><td class="td-amount">30万円〜60万円</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 民事基本基準①の額が上記を上回るときは①による。</p>
+  </div>
+
+  <!-- 相続・遺言 -->
+  <div class="table-section" id="cat-inheritance">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Inheritance / Will</span><span class="sec-heading-jp">相続・遺言</span></div></div>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">費用目安</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">遺産分割協議（交渉）</td><td class="td-amount">相続分の時価額を基準に民事基本基準の3分の2</td><td class="td-note">争いのない部分は時価の3分の1で算定</td></tr>
+        <tr><td class="td-name">遺産分割調停・審判</td><td class="td-amount">相続分の時価額を基準に民事基本基準による</td><td class="td-note">争いのない部分は時価の3分の1で算定</td></tr>
+        <tr><td class="td-name">遺留分侵害額請求</td><td class="td-amount">遺留分の時価額を基準に民事基本基準による</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">相続放棄</td><td class="td-amount">5万円〜</td><td class="td-note">1名あたり。複数名は協議</td></tr>
+      </tbody>
+    </table>
+    <p class="subsec-title">遺言書作成・遺言執行</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">手数料</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">遺言書作成（定型）</td><td class="td-amount">10万円〜20万円</td><td class="td-note">公正証書にする場合は＋3万円</td></tr>
+        <tr><td class="td-name">遺言書作成（非定型・経済的利益300万円以下）</td><td class="td-amount">20万円</td><td class="td-note">公正証書にする場合は＋3万円</td></tr>
+        <tr><td class="td-name">遺言書作成（非定型・300万円超〜3,000万円以下）</td><td class="td-amount">1%＋17万円</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">遺言書作成（非定型・3,000万円超〜3億円以下）</td><td class="td-amount">0.3%＋38万円</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">遺言執行（経済的利益300万円以下）</td><td class="td-amount">30万円</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">遺言執行（300万円超〜3,000万円以下）</td><td class="td-amount">2%＋24万円</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">遺言執行（3,000万円超〜3億円以下）</td><td class="td-amount">1%＋54万円</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">遺言執行（3億円超）</td><td class="td-amount">0.5%＋204万円</td><td class="td-note">—</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 遺言執行に裁判手続を要する場合は、遺言執行手数料とは別に裁判手続に要する弁護士報酬を請求できます。</p>
+  </div>
+
+  <!-- 債務整理・破産 -->
+  <div class="table-section" id="cat-debt">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Debt Relief / Bankruptcy</span><span class="sec-heading-jp">債務整理・破産・再生</span></div></div>
+
+    <p class="subsec-title">① 任意整理（個人・法人）</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">種別</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">非事業者の任意整理</td><td class="td-amount">20万円以上</td><td class="td-amount">※下記参照</td></tr>
+        <tr><td class="td-name">事業者の任意整理</td><td class="td-amount">50万円以上</td><td class="td-amount">※下記参照</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">
+      ※ 報酬金（精算終了の場合）：配当源資額が500万円以下15%／500万円超〜1,000万円以下10%＋25万円／1,000万円超〜5,000万円以下8%＋45万円／5,000万円超〜1億円以下6%＋145万円／1億円超5%＋245万円<br>
+      ※ 依頼者からの任意提供分：5,000万円以下3%／5,000万円超〜1億円以下2%＋50万円／1億円超1%＋150万円
+    </p>
+
+    <p class="subsec-title">② 自己破産・会社整理・特別清算・会社更生（申立事件）</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">種別</th><th style="width:30%">着手金（最低額）</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">非事業者の自己破産</td><td class="td-amount">20万円以上</td><td class="td-amount">免責決定時に民事基本基準準用</td></tr>
+        <tr><td class="td-name">事業者の自己破産</td><td class="td-amount">50万円以上</td><td class="td-amount">免責決定時に民事基本基準準用</td></tr>
+        <tr><td class="td-name">自己破産以外の破産</td><td class="td-amount">50万円以上</td><td class="td-amount">民事基本基準準用</td></tr>
+        <tr><td class="td-name">会社整理</td><td class="td-amount">100万円以上</td><td class="td-amount">民事基本基準準用</td></tr>
+        <tr><td class="td-name">特別清算</td><td class="td-amount">100万円以上</td><td class="td-amount">民事基本基準準用</td></tr>
+        <tr><td class="td-name">会社更生</td><td class="td-amount">200万円以上</td><td class="td-amount">民事基本基準準用</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 資本金・資産・負債の額、関係人の数等事件の規模および事件処理に要する執務量に応じて決定します。<br>
+    ※ 保全事件の弁護士報酬は着手金に含まれます。<br>
+    ※ 免責申立事件のみを受任した場合の着手金は上記の2分の1。</p>
+
+    <p class="subsec-title">③ 民事再生（個人・法人）</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">種別</th><th style="width:30%">着手金（最低額）</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">法人・事業者の民事再生</td><td class="td-amount">100万円以上</td><td class="td-note">別途月額執務報酬あり</td></tr>
+        <tr><td class="td-name">非事業者の民事再生</td><td class="td-amount">30万円以上</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">小規模個人・給与所得者等</td><td class="td-amount">20万円以上</td><td class="td-note">住宅ローン特則加算あり</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 再生手続開始決定後〜終了までの執務報酬として月額報酬を別途受けることができます。<br>
+    ※ 報奨金は再生計画認可決定を受けたときに限り、弁済額・免除債権額等を基準として民事基本基準を準用。<br>
+    ※ 保全事件の弁護士報酬は着手金に含まれます。</p>
+
+    <p class="subsec-title">④ 個人の過払金返還・任意整理（消費者向け目安）</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">種別</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">任意整理（1社あたり）</td><td class="td-amount">3万円〜5万円</td><td class="td-amount">減額分の10%・過払回収額の20%</td></tr>
+        <tr><td class="td-name">過払金返還請求（交渉）</td><td class="td-amount">0円〜</td><td class="td-amount">回収額の20%</td></tr>
+        <tr><td class="td-name">過払金返還請求（訴訟）</td><td class="td-amount">民事基本基準の3分の2</td><td class="td-amount">回収額の25%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 不動産 -->
+  <div class="table-section" id="cat-realestate">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Real Estate</span><span class="sec-heading-jp">不動産・建築</span></div></div>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">賃貸借トラブル・明渡し（交渉）</td><td class="td-amount">民事基本基準の3分の2（最低10万円）</td><td class="td-amount">民事基本基準の3分の2</td></tr>
+        <tr><td class="td-name">賃貸借トラブル・明渡し（訴訟）</td><td class="td-amount">20万円〜（民事基本基準による）</td><td class="td-amount">民事基本基準による</td></tr>
+        <tr><td class="td-name">売買・建築瑕疵トラブル</td><td class="td-amount">民事基本基準による</td><td class="td-amount">民事基本基準による</td></tr>
+        <tr><td class="td-name">借地非訟事件</td><td class="td-amount">借地権額に応じ20万円〜</td><td class="td-amount">経済的利益を基準に民事基本基準準用</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 継続的給付債権（賃料等）は債権総額の10分の7、賃料増減額請求は増減額分の7年分を経済的利益として算定します。</p>
+  </div>
+
+  <!-- 損害賠償・交通事故・労災 -->
+  <div class="table-section" id="cat-damage">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Damages / Traffic / Labor</span><span class="sec-heading-jp">損害賠償・交通事故・労災</span></div></div>
+
+    <p class="subsec-title">損害賠償事件</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">損害賠償請求（交渉・調停）</td><td class="td-amount">民事基本基準の3分の2</td><td class="td-amount">民事基本基準の3分の2</td></tr>
+        <tr><td class="td-name">損害賠償請求（訴訟）</td><td class="td-amount">民事基本基準による</td><td class="td-amount">民事基本基準による</td></tr>
+      </tbody>
+    </table>
+
+    <p class="subsec-title">交通事故</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">保険会社との示談交渉</td><td class="td-amount">10万円〜</td><td class="td-amount">回収額の10%〜16%</td></tr>
+        <tr><td class="td-name">調停・ADR申立て</td><td class="td-amount">15万円〜</td><td class="td-amount">回収額の10%〜16%</td></tr>
+        <tr><td class="td-name">損害賠償訴訟</td><td class="td-amount">民事基本基準による</td><td class="td-amount">民事基本基準による</td></tr>
+        <tr><td class="td-name">簡易な自賠責請求（旧規程10条）</td><td class="td-amount">給付金の2%（150万円以下は3万円）</td><td class="td-note">—</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 弁護士費用特約（自動車保険）をご利用の場合、費用の全部または一部が保険でカバーされる場合があります。<br>
+    ※ 死亡事故・重篤な後遺障害を伴う事案は個別にご相談ください。</p>
+
+    <p class="subsec-title">労災・労働災害</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">労災認定申請サポート</td><td class="td-amount">10万円〜</td><td class="td-amount">—</td></tr>
+        <tr><td class="td-name">不服申立（審査請求・再審査請求）</td><td class="td-amount">10万円〜</td><td class="td-amount">民事基本基準準用</td></tr>
+        <tr><td class="td-name">会社への損害賠償請求（交渉）</td><td class="td-amount">民事基本基準の3分の2</td><td class="td-amount">民事基本基準の3分の2</td></tr>
+        <tr><td class="td-name">会社への損害賠償請求（訴訟）</td><td class="td-amount">民事基本基準による</td><td class="td-amount">民事基本基準による</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 労災保険給付と会社への損害賠償請求は併用できます。<br>
+    ※ 過労死・ハラスメントによる精神疾患の事案も対応しております。</p>
+  </div>
+
+  <!-- 刑事・少年 -->
+  <div class="table-section" id="cat-criminal">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Criminal / Juvenile</span><span class="sec-heading-jp">刑事事件・少年事件</span></div></div>
+
+    <p class="subsec-title">① 刑事事件（事案簡明なもの）</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">段階</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">起訴前（不起訴・略式命令）</td><td class="td-amount">20万円〜50万円</td><td class="td-amount">20万円〜50万円</td></tr>
+        <tr><td class="td-name">起訴後（執行猶予・刑の軽減）</td><td class="td-amount">20万円〜50万円</td><td class="td-amount">20万円〜50万円</td></tr>
+      </tbody>
+    </table>
+
+    <p class="subsec-title">② 刑事事件（事案簡明でないもの・再審事件）</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">段階・結果</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">起訴前・不起訴</td><td class="td-amount">20万円以上</td><td class="td-amount">20万円以上</td></tr>
+        <tr><td class="td-name">起訴前・略式命令</td><td class="td-amount">20万円以上</td><td class="td-amount">20万円以上</td></tr>
+        <tr><td class="td-name">起訴後・無罪</td><td class="td-amount">20万円以上</td><td class="td-amount">50万円以上</td></tr>
+        <tr><td class="td-name">起訴後・執行猶予</td><td class="td-amount">20万円以上</td><td class="td-amount">20万円以上</td></tr>
+        <tr><td class="td-name">起訴後・刑の軽減</td><td class="td-amount">20万円以上</td><td class="td-amount">軽減の程度による</td></tr>
+        <tr><td class="td-name">検察官上訴が棄却された場合</td><td class="td-amount">—</td><td class="td-amount">20万円以上</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 同一弁護士が起訴前から起訴後も引き続き受任するときは追加着手金を受けることができます（事案簡明な事件は起訴前の2分の1）。<br>
+    ※ 保釈・勾留執行停止・抗告等の申立ては被告事件とは別に受けることができます。</p>
+
+    <p class="subsec-title">③ 少年事件</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">段階</th><th style="width:30%">着手金</th><th>報酬金</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">家庭裁判所送致前・送致後</td><td class="td-amount">20万円〜50万円</td><td class="td-amount">非行事実なし：20万円以上／その他：20万円〜50万円</td></tr>
+        <tr><td class="td-name">抗告・再抗告・保護処分取消</td><td class="td-amount">20万円〜50万円</td><td class="td-amount">20万円〜50万円</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 家庭裁判所送致前の受任か否か、非行事実の争いの有無、観護措置の有無等を考慮して増減額します。</p>
+  </div>
+
+  <!-- 企業法務 -->
+  <div class="table-section" id="cat-corporate">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Corporate</span><span class="sec-heading-jp">企業法務</span></div></div>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">費用目安</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">顧問契約（事業者）</td><td class="td-amount">月額5万円以上</td><td class="td-note">業務範囲により協議</td></tr>
+        <tr><td class="td-name">顧問契約（非事業者）</td><td class="td-amount">年額6万円（月額10,000円）以上</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">契約書作成・審査（定型）</td><td class="td-amount">5万円〜10万円</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">契約書作成・審査（非定型）</td><td class="td-amount">経済的利益額に応じ民事基本基準準用</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">株主総会等指導</td><td class="td-amount">30万円以上（総会準備指導は50万円以上）</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">労務トラブル（交渉・労働審判）</td><td class="td-amount">民事基本基準の3分の2</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">労務トラブル（訴訟）</td><td class="td-amount">民事基本基準による</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">行政上の審査請求・不服申立</td><td class="td-amount">20万円〜50万円</td><td class="td-note">最低額10万円</td></tr>
+      </tbody>
+    </table>
+
+    <p class="subsec-title">会社設立・組織変更等</p>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">資本額・総資産額等</th><th colspan="2">手数料</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">1,000万円以下</td><td class="td-amount" colspan="2">4%（最低10万円）</td></tr>
+        <tr><td class="td-name">1,000万円超〜2,000万円以下</td><td class="td-amount" colspan="2">3%＋10万円</td></tr>
+        <tr><td class="td-name">2,000万円超〜1億円以下</td><td class="td-amount" colspan="2">2%＋30万円</td></tr>
+        <tr><td class="td-name">1億円超〜2億円以下</td><td class="td-amount" colspan="2">1%＋130万円</td></tr>
+        <tr><td class="td-name">2億円超〜20億円以下</td><td class="td-amount" colspan="2">0.5%＋230万円</td></tr>
+        <tr><td class="td-name">20億円超</td><td class="td-amount" colspan="2">0.3%＋630万円</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※ 合併・分割は最低200万円、通常精算は最低100万円。</p>
+  </div>
+
+  <!-- その他手数料 -->
+  <div class="table-section" id="cat-other">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Other Fees</span><span class="sec-heading-jp">その他の手数料</span></div></div>
+    <table class="fee-table">
+      <thead><tr><th style="width:40%">業務内容</th><th style="width:30%">手数料</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="td-name">法律関係調査（事実関係調査を含む）</td><td class="td-amount">経済的利益に応じ算定</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">内容証明郵便作成（弁護士名なし）</td><td class="td-amount">1万円〜3万円</td><td class="td-note">複雑な場合は協議</td></tr>
+        <tr><td class="td-name">内容証明郵便作成（弁護士名あり）</td><td class="td-amount">3万円〜5万円</td><td class="td-note">複雑な場合は協議</td></tr>
+        <tr><td class="td-name">証拠保全</td><td class="td-amount">①の2分の1（最低10万円）</td><td class="td-note">本案事件と別に受けることができる</td></tr>
+        <tr><td class="td-name">即決和解申立</td><td class="td-amount">経済的利益に応じ算定</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">告訴・告発・検察審査申立等</td><td class="td-amount">5万円〜20万円</td><td class="td-note">複雑な場合は協議</td></tr>
+        <tr><td class="td-name">簡易な家事審判（事案簡明なもの）</td><td class="td-amount">10万円〜20万円</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">任意後見・財産管理（基本事務）</td><td class="td-amount">月額5,000円〜5万円</td><td class="td-note">収益不動産管理等は月額3万円〜5万円加算</td></tr>
+        <tr><td class="td-name">登記申請手続（1件）</td><td class="td-amount">5万円</td><td class="td-note">謄抄本・戸籍等の交付手続は1通1,000円</td></tr>
+        <tr><td class="td-name">日当（半日・往復2〜4時間）</td><td class="td-amount">3万円〜5万円</td><td class="td-note">—</td></tr>
+        <tr><td class="td-name">日当（1日・往復4時間超）</td><td class="td-amount">5万円〜10万円</td><td class="td-note">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 実費について -->
+  <div class="table-section" id="cat-jisspi">
+    <div class="sec-heading"><div class="sec-heading-bar"></div><div><span class="sec-heading-en">Expenses</span><span class="sec-heading-jp">実費について</span></div></div>
+    <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:24px; line-height:2;">
+      実費とは、弁護士報酬とは別に、事件処理に実際にかかる費用です。依頼時にご説明いたします。
+    </p>
+    <div class="jisspi-grid">
+      <div class="jisspi-item"><p class="jisspi-label">裁判所費用</p><p class="jisspi-val">印紙代・切手代・予納金など、裁判所に納める費用</p></div>
+      <div class="jisspi-item"><p class="jisspi-label">通信費</p><p class="jisspi-val">内容証明郵便・書留・FAX等の通信にかかる費用</p></div>
+      <div class="jisspi-item"><p class="jisspi-label">交通費</p><p class="jisspi-val">裁判所・相手方事務所等への交通費（実費）</p></div>
+      <div class="jisspi-item"><p class="jisspi-label">調査費用</p><p class="jisspi-val">不動産登記簿・戸籍・住民票等の取得費用</p></div>
+      <div class="jisspi-item"><p class="jisspi-label">鑑定費用</p><p class="jisspi-val">不動産鑑定・建築鑑定・医療鑑定等の専門家費用</p></div>
+      <div class="jisspi-item"><p class="jisspi-label">その他</p><p class="jisspi-val">コピー代・翻訳費用・その他事件処理に必要な費用</p></div>
+    </div>
+    <p class="table-note">※ 実費は事前にお預かりする場合があります。事件終了時に精算いたします。<br>
+    ※ 自己破産・民事再生等の申立事件では、裁判所への予納金が別途必要となります（同時廃止事件で概ね2万円前後、管財事件は事案により20万円以上）。</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- 法テラス -->
+  <div class="legal-aid">
+    <span class="legal-aid-icon">💡</span>
+    <div>
+      <p class="legal-aid-title">費用のご負担が難しい方へ ── 法テラスのご案内</p>
+      <p class="legal-aid-text">収入・資産が一定基準以下の方は、法テラス（日本司法支援センター）の民事法律扶助制度をご利用いただける場合があります。弁護士費用の立替制度があり、毎月少額ずつの分割返済が可能です。また、弁護士費用保険（日常弁護士保険等）をご利用の場合も対応しております。詳しくはご相談の際にお気軽にお申し出ください。</p>
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <a href="index.html#contact" class="cta-btn">相談を予約する</a>
+    <p class="cta-sub">初回相談 10,000円（税込）・秘密厳守</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en" style="font-family:'Cormorant Garamond',serif;font-size:0.75rem;color:var(--gold-light);letter-spacing:0.2em;">Tokyo Itabashi Law Office</span>
+  </div>
+  <div class="footer-links">
+    <a href="fee.html">弁護士費用</a>
+    <a href="faq.html">よくある質問</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="disclaimer.html">免責事項</a>
+  </div>
+  <p class="footer-copy">© 2026 東京板橋法律事務所 All Rights Reserved.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.table-section').forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('active');
+      // タブの少し上にスクロール
+      document.querySelector('.cat-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
