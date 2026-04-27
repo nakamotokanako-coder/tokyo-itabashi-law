@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>よくある質問 | 東京板橋法律事務所</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --navy-light: #2a4a8a;
+    --gold: #b8963e;
+    --gold-light: #d4b06a;
+    --silver: #8a9ab5;
+    --cream: #f5f2ec;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,31,61,0.97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,150,62,0.3);
+    padding: 0 48px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: baseline; gap: 12px; text-decoration: none; }
+  .logo-jp { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: 0.12em; }
+  .logo-en { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; color: var(--gold-light); letter-spacing: 0.2em; font-weight: 300; }
+  nav { display: flex; gap: 36px; align-items: center; }
+  nav a { font-size: 0.78rem; color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.15em; font-family: 'Noto Serif JP', serif; transition: color 0.3s; position: relative; }
+  nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+  nav a:hover { color: var(--gold-light); }
+  nav a:hover::after { transform: scaleX(1); }
+  .btn-nav-contact { background: var(--gold); color: var(--navy) !important; padding: 10px 24px; font-weight: 500; }
+  .btn-nav-contact::after { display: none !important; }
+  .btn-nav-contact:hover { background: var(--gold-light) !important; }
+
+  .page-hero {
+    margin-top: 72px;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+    padding: 72px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(42,74,138,0.4) 0%, transparent 60%);
+  }
+  .page-hero-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem; color: var(--gold); letter-spacing: 0.4em;
+    text-transform: uppercase; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 16px; position: relative;
+  }
+  .page-hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .page-hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300;
+    color: var(--white); letter-spacing: 0.1em; position: relative;
+  }
+  .breadcrumb {
+    padding: 16px 10%;
+    background: var(--cream);
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    display: flex; gap: 8px; align-items: center;
+  }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+
+  .page-content { padding: 80px 10%; max-width: 1000px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.75rem;
+    color: var(--gold); letter-spacing: 0.4em; text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300;
+    color: var(--navy); letter-spacing: 0.1em; line-height: 1.5;
+    margin-bottom: 40px;
+  }
+
+  footer {
+    background: #080f1e; padding: 40px 10%;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(184,150,62,0.15);
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { display: flex; align-items: baseline; gap: 12px; }
+  .footer-logo .logo-jp { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .notice-box {
+    background: var(--cream); border-left: 3px solid var(--gold);
+    padding: 20px 24px; margin-bottom: 48px;
+    font-size: 0.85rem; line-height: 2; color: var(--text-light);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en">Tokyo Itabashi Law Office</span>
+  </a>
+  <nav>
+    <a href="index.html#practice">取扱業務</a>
+    <a href="index.html#about">事務所紹介</a>
+    <a href="fee.html">費用</a>
+    <a href="faq.html">よくある質問</a>
+    <a href="index.html#access">アクセス</a>
+    <a href="index.html#contact" class="btn-nav-contact">相談予約</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <p class="page-hero-label">FAQ</p>
+  <h1 class="page-hero-title">よくある質問</h1>
+</div>
+<div class="breadcrumb">
+  <a href="index.html">トップ</a> ＞ よくある質問
+</div>
+<div class="page-content">
+
+<style>
+  .faq-category {{ margin-bottom: 64px; }}
+  .faq-category-title {{
+    font-family: 'Noto Serif JP', serif; font-size: 1.05rem;
+    font-weight: 600; color: var(--navy); letter-spacing: 0.12em;
+    border-left: 3px solid var(--gold); padding-left: 16px;
+    margin-bottom: 24px;
+  }}
+  .faq-item {{
+    border-bottom: 1px solid #e8e4da; overflow: hidden;
+  }}
+  .faq-q {{
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 24px 0; cursor: pointer;
+    transition: color 0.3s;
+  }}
+  .faq-q:hover .faq-q-text {{ color: var(--navy-light); }}
+  .faq-q-mark {{
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    color: var(--gold); font-weight: 600; flex-shrink: 0;
+    line-height: 1.4;
+  }}
+  .faq-q-text {{
+    font-family: 'Noto Serif JP', serif; font-size: 0.92rem;
+    color: var(--navy); letter-spacing: 0.06em; line-height: 1.6;
+    flex: 1; padding-top: 4px; transition: color 0.3s;
+  }}
+  .faq-toggle {{
+    flex-shrink: 0; font-size: 1.2rem; color: var(--gold);
+    transition: transform 0.3s; padding-top: 4px;
+  }}
+  .faq-item.open .faq-toggle {{ transform: rotate(45deg); }}
+  .faq-a {{
+    display: none; padding: 0 0 24px 40px;
+  }}
+  .faq-item.open .faq-a {{ display: block; }}
+  .faq-a-text {{
+    font-size: 0.85rem; color: var(--text-light);
+    line-height: 2.2; letter-spacing: 0.06em;
+  }}
+  .faq-a-text strong {{ color: var(--navy); }}
+</style>
+
+<div class="notice-box">
+  以下はよくあるご質問をまとめたものです。個別のご事情によって回答が異なる場合があります。<br>
+  具体的なご相談は初回相談（5,000円・税込）にてお受けしております。
+</div>
+
+<!-- 費用について -->
+<div class="faq-category">
+  <p class="faq-category-title">費用について</p>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">弁護士費用が払えない場合はどうすればいいですか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">収入・資産が一定基準以下の方は、<strong>法テラス（日本司法支援センター）の民事法律扶助制度</strong>をご利用いただける場合があります。弁護士費用を立て替えてもらい、毎月少額ずつ返済する仕組みです。また、<strong>弁護士費用保険</strong>（日常弁護士保険等）をお持ちの方はご活用いただけます。詳しくはご相談の際にお申し出ください。</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">費用の分割払いはできますか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">事案の内容や状況によりご相談に応じております。初回相談の際にお気軽にお申し出ください。</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">着手金を払ったのに負けた場合、返金されますか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">着手金は弁護士が業務を開始するための費用であり、結果に関わらず原則として返金されません。ただし、依頼後すぐにキャンセルされた場合など、状況に応じてご相談に応じることがあります。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 相談・依頼について -->
+<div class="faq-category">
+  <p class="faq-category-title">相談・依頼について</p>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">初回相談では何を持参すればいいですか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">相談内容に関係する書類（契約書・通知書・診断書・戸籍など）があればご持参ください。なくても相談は可能です。また、<strong>時系列のメモ</strong>を事前にまとめておいていただくとスムーズです。</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">相談した内容は他に漏れませんか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">弁護士には<strong>守秘義務</strong>があり、ご相談の内容を第三者に漏らすことは法律で禁じられています。安心してご相談ください。</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">相談だけで依頼しなくても大丈夫ですか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">もちろんです。相談のみでご依頼されなくても、一切問題ありません。相談料（5,000円・税込）のみ頂戴いたします。</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">オンライン相談はできますか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">○○（対応可否を記入してください）。ご希望の方はお問い合わせの際にその旨お知らせください。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 離婚・家族問題 -->
+<div class="faq-category">
+  <p class="faq-category-title">離婚・家族問題</p>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">離婚したいのに相手が同意しない場合はどうすればいいですか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">協議離婚（話し合い）→ 調停離婚（家庭裁判所での調停）→ 裁判離婚（離婚訴訟）という手順で進めることができます。裁判では<strong>法定離婚原因（不貞行為・悪意の遺棄・3年以上の生死不明・強度の精神病・その他婚姻を継続しがたい重大な事由）</strong>が認められれば、相手の同意がなくても離婚できる場合があります。</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">養育費はいつまで請求できますか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">原則として<strong>子どもが成人するまで（20歳）</strong>ですが、大学進学などを見越して22歳まで定めるケースも多くあります。取り決めは離婚時に公正証書等で書面化しておくことを強くお勧めします。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 相続 -->
+<div class="faq-category">
+  <p class="faq-category-title">相続・遺言</p>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">相続放棄の期限はありますか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text"><strong>相続を知った日から3ヶ月以内</strong>に家庭裁判所への申述が必要です。借金が多い場合など、早めにご相談ください。期限を過ぎた場合でも例外的に認められるケースがありますので、まずはご相談ください。</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">遺言書がない場合、遺産はどう分けますか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">遺言書がない場合は、法律で定められた<strong>法定相続分</strong>を基準に相続人全員で遺産分割協議を行います。協議がまとまらない場合は家庭裁判所での調停・審判となります。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 債務整理 -->
+<div class="faq-category">
+  <p class="faq-category-title">債務整理・破産</p>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">自己破産すると家や車はどうなりますか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">自己破産では一定以上の価値がある財産（不動産・高額な車など）は処分対象となります。ただし、<strong>20万円以下の財産や99万円以下の現金、生活に必要な家財</strong>は手元に残せます。持ち家を残したい場合は「個人再生」が有効な場合があります。詳しくはご相談ください。</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      <span class="faq-q-mark">Q</span>
+      <span class="faq-q-text">債務整理すると家族や職場にバレますか？</span>
+      <span class="faq-toggle">＋</span>
+    </div>
+    <div class="faq-a">
+      <p class="faq-a-text">手続きによって異なります。<strong>任意整理</strong>は裁判所を使わないため、官報への掲載もなく、基本的に周囲に知られる可能性は低いです。<strong>自己破産・個人再生</strong>は官報に掲載されますが、一般の方が官報を確認することはほぼありません。職場への通知は原則ありません。</p>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; margin-top: 48px;">
+  <a href="index.html#contact" style="background:var(--gold);color:var(--navy);padding:18px 48px;font-family:'Noto Serif JP',serif;font-size:0.9rem;letter-spacing:0.2em;font-weight:600;text-decoration:none;display:inline-block;">相談を予約する（初回5,000円）</a>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</div>
+<footer>
+  <div class="footer-logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en" style="font-family:'Cormorant Garamond',serif;font-size:0.75rem;color:var(--gold-light);letter-spacing:0.2em;">Tokyo Itabashi Law Office</span>
+  </div>
+  <div class="footer-links">
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="disclaimer.html">免責事項</a>
+  </div>
+  <p class="footer-copy">© 2026 東京板橋法律事務所 All Rights Reserved.</p>
+</footer>
+</body>
+</html>

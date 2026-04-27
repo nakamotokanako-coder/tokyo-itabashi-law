@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>弁護士費用・料金表 | 東京板橋法律事務所</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --navy-light: #2a4a8a;
+    --gold: #b8963e;
+    --gold-light: #d4b06a;
+    --silver: #8a9ab5;
+    --cream: #f5f2ec;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,31,61,0.97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,150,62,0.3);
+    padding: 0 48px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: baseline; gap: 12px; text-decoration: none; }
+  .logo-jp { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: 0.12em; }
+  .logo-en { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; color: var(--gold-light); letter-spacing: 0.2em; font-weight: 300; }
+  nav { display: flex; gap: 36px; align-items: center; }
+  nav a { font-size: 0.78rem; color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.15em; font-family: 'Noto Serif JP', serif; transition: color 0.3s; position: relative; }
+  nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+  nav a:hover { color: var(--gold-light); }
+  nav a:hover::after { transform: scaleX(1); }
+  .btn-nav-contact { background: var(--gold); color: var(--navy) !important; padding: 10px 24px; font-weight: 500; }
+  .btn-nav-contact::after { display: none !important; }
+  .btn-nav-contact:hover { background: var(--gold-light) !important; }
+
+  .page-hero {
+    margin-top: 72px;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+    padding: 72px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(42,74,138,0.4) 0%, transparent 60%);
+  }
+  .page-hero-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem; color: var(--gold); letter-spacing: 0.4em;
+    text-transform: uppercase; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 16px; position: relative;
+  }
+  .page-hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .page-hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300;
+    color: var(--white); letter-spacing: 0.1em; position: relative;
+  }
+  .breadcrumb {
+    padding: 16px 10%;
+    background: var(--cream);
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    display: flex; gap: 8px; align-items: center;
+  }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+
+  .page-content { padding: 80px 10%; max-width: 1000px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.75rem;
+    color: var(--gold); letter-spacing: 0.4em; text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300;
+    color: var(--navy); letter-spacing: 0.1em; line-height: 1.5;
+    margin-bottom: 40px;
+  }
+
+  footer {
+    background: #080f1e; padding: 40px 10%;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(184,150,62,0.15);
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { display: flex; align-items: baseline; gap: 12px; }
+  .footer-logo .logo-jp { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .notice-box {
+    background: var(--cream); border-left: 3px solid var(--gold);
+    padding: 20px 24px; margin-bottom: 48px;
+    font-size: 0.85rem; line-height: 2; color: var(--text-light);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en">Tokyo Itabashi Law Office</span>
+  </a>
+  <nav>
+    <a href="index.html#practice">取扱業務</a>
+    <a href="index.html#about">事務所紹介</a>
+    <a href="fee.html">費用</a>
+    <a href="faq.html">よくある質問</a>
+    <a href="index.html#access">アクセス</a>
+    <a href="index.html#contact" class="btn-nav-contact">相談予約</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <p class="page-hero-label">Fee Schedule</p>
+  <h1 class="page-hero-title">弁護士費用・料金表</h1>
+</div>
+<div class="breadcrumb">
+  <a href="index.html">トップ</a> ＞ 弁護士費用・料金表
+</div>
+<div class="page-content">
+
+<style>
+  .fee-table {{ width: 100%; border-collapse: collapse; margin-bottom: 48px; }}
+  .fee-table th {{
+    background: var(--navy); color: var(--white);
+    font-family: 'Noto Serif JP', serif; font-size: 0.82rem;
+    letter-spacing: 0.1em; padding: 16px 20px; text-align: left;
+    font-weight: 400;
+  }}
+  .fee-table td {{
+    padding: 16px 20px; border-bottom: 1px solid #e8e4da;
+    font-size: 0.85rem; line-height: 1.9; color: var(--text);
+    letter-spacing: 0.05em;
+  }}
+  .fee-table tr:last-child td {{ border-bottom: none; }}
+  .fee-table tr:nth-child(even) td {{ background: var(--cream); }}
+  .fee-label {{
+    font-family: 'Noto Serif JP', serif; font-weight: 600;
+    color: var(--navy); font-size: 0.88rem;
+  }}
+  .fee-amount {{
+    color: var(--navy); font-weight: 600; font-size: 0.95rem;
+    white-space: nowrap;
+  }}
+  .fee-section {{ margin-bottom: 64px; }}
+  .fee-section-title {{
+    font-family: 'Noto Serif JP', serif; font-size: 1.1rem;
+    color: var(--navy); letter-spacing: 0.12em; font-weight: 600;
+    border-left: 3px solid var(--gold); padding-left: 16px;
+    margin-bottom: 24px;
+  }}
+  .fee-note {{
+    font-size: 0.78rem; color: var(--text-light);
+    line-height: 2; letter-spacing: 0.05em;
+    margin-top: 12px;
+  }}
+  .fee-flow {{
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    margin-bottom: 64px;
+  }}
+  .fee-flow-item {{
+    background: var(--cream); padding: 28px 24px; text-align: center;
+  }}
+  .fee-flow-num {{
+    font-family: 'Cormorant Garamond', serif; font-size: 2rem;
+    color: var(--gold); margin-bottom: 8px;
+  }}
+  .fee-flow-name {{
+    font-family: 'Noto Serif JP', serif; font-size: 0.9rem;
+    font-weight: 600; color: var(--navy); margin-bottom: 8px;
+  }}
+  .fee-flow-desc {{ font-size: 0.78rem; color: var(--text-light); line-height: 1.8; }}
+  .legal-aid-box {{
+    background: var(--navy); color: var(--white);
+    padding: 36px 40px; margin-bottom: 48px;
+  }}
+  .legal-aid-box h3 {{
+    font-family: 'Noto Serif JP', serif; font-size: 1rem;
+    color: var(--gold-light); letter-spacing: 0.12em; margin-bottom: 16px;
+  }}
+  .legal-aid-box p {{
+    font-size: 0.85rem; color: rgba(255,255,255,0.7);
+    line-height: 2.2; letter-spacing: 0.06em;
+  }}
+</style>
+
+<div class="notice-box">
+  ※ 以下の料金はあくまでも目安です。事案の複雑さや難易度によって異なります。<br>
+  詳細は初回相談（5,000円・税込）にてご説明いたします。消費税は別途申し受けます。
+</div>
+
+<!-- 費用の種類 -->
+<div class="fee-section">
+  <p class="section-label">Types of Fee</p>
+  <h2 class="section-title">弁護士費用の種類</h2>
+  <div class="fee-flow">
+    <div class="fee-flow-item">
+      <p class="fee-flow-num">01</p>
+      <p class="fee-flow-name">相談料</p>
+      <p class="fee-flow-desc">初回相談にかかる費用。当事務所は初回5,000円（税込）です。</p>
+    </div>
+    <div class="fee-flow-item">
+      <p class="fee-flow-num">02</p>
+      <p class="fee-flow-name">着手金</p>
+      <p class="fee-flow-desc">依頼時にお支払いいただく費用。結果に関わらず発生します。</p>
+    </div>
+    <div class="fee-flow-item">
+      <p class="fee-flow-num">03</p>
+      <p class="fee-flow-name">報酬金</p>
+      <p class="fee-flow-desc">解決後、得られた経済的利益に応じてお支払いいただく費用。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 相談料 -->
+<div class="fee-section">
+  <p class="fee-section-title">相談料</p>
+  <table class="fee-table">
+    <tr><th>種別</th><th>料金</th><th>備考</th></tr>
+    <tr><td class="fee-label">初回法律相談</td><td class="fee-amount">5,000円</td><td>税込・60分程度</td></tr>
+    <tr><td class="fee-label">2回目以降の相談</td><td class="fee-amount">○○円 / 30分</td><td>税別</td></tr>
+  </table>
+</div>
+
+<!-- 離婚 -->
+<div class="fee-section">
+  <p class="fee-section-title">離婚・男女問題</p>
+  <table class="fee-table">
+    <tr><th>業務内容</th><th>着手金</th><th>報酬金</th></tr>
+    <tr><td class="fee-label">離婚協議（交渉）</td><td class="fee-amount">○○万円〜</td><td class="fee-amount">○○万円〜</td></tr>
+    <tr><td class="fee-label">離婚調停</td><td class="fee-amount">○○万円〜</td><td class="fee-amount">○○万円〜</td></tr>
+    <tr><td class="fee-label">離婚訴訟</td><td class="fee-amount">○○万円〜</td><td class="fee-amount">○○万円〜</td></tr>
+    <tr><td class="fee-label">養育費・婚姻費用調停</td><td class="fee-amount">○○万円〜</td><td class="fee-amount">○○万円〜</td></tr>
+  </table>
+  <p class="fee-note">※ 財産分与・慰謝料など財産的請求を伴う場合は、経済的利益に応じた報酬が加算されます。</p>
+</div>
+
+<!-- 相続 -->
+<div class="fee-section">
+  <p class="fee-section-title">相続・遺言</p>
+  <table class="fee-table">
+    <tr><th>業務内容</th><th>費用目安</th><th>備考</th></tr>
+    <tr><td class="fee-label">遺言書作成（定型）</td><td class="fee-amount">○○万円〜</td><td>公正証書遺言の場合は別途公証人費用</td></tr>
+    <tr><td class="fee-label">遺産分割協議</td><td class="fee-amount">○○万円〜</td><td>遺産総額により変動</td></tr>
+    <tr><td class="fee-label">遺産分割調停・審判</td><td class="fee-amount">○○万円〜</td><td>—</td></tr>
+    <tr><td class="fee-label">相続放棄</td><td class="fee-amount">○○万円〜</td><td>1名あたり</td></tr>
+  </table>
+</div>
+
+<!-- 債務整理 -->
+<div class="fee-section">
+  <p class="fee-section-title">債務整理・破産</p>
+  <table class="fee-table">
+    <tr><th>手続き</th><th>費用目安</th><th>備考</th></tr>
+    <tr><td class="fee-label">任意整理</td><td class="fee-amount">1社 ○○万円〜</td><td>債権者数により変動</td></tr>
+    <tr><td class="fee-label">個人再生</td><td class="fee-amount">○○万円〜</td><td>住宅ローン特則あり</td></tr>
+    <tr><td class="fee-label">自己破産</td><td class="fee-amount">○○万円〜</td><td>管財事件は別途予納金が必要</td></tr>
+  </table>
+</div>
+
+<!-- 不動産 -->
+<div class="fee-section">
+  <p class="fee-section-title">不動産・建築</p>
+  <table class="fee-table">
+    <tr><th>業務内容</th><th>着手金</th><th>報酬金</th></tr>
+    <tr><td class="fee-label">賃貸借トラブル（交渉）</td><td class="fee-amount">○○万円〜</td><td class="fee-amount">○○万円〜</td></tr>
+    <tr><td class="fee-label">明渡し請求</td><td class="fee-amount">○○万円〜</td><td class="fee-amount">○○万円〜</td></tr>
+    <tr><td class="fee-label">売買トラブル</td><td class="fee-amount">○○万円〜</td><td class="fee-amount">○○万円〜</td></tr>
+  </table>
+</div>
+
+<!-- 法テラス -->
+<div class="legal-aid-box">
+  <h3>💡 費用のご負担が難しい方へ ── 法テラスのご案内</h3>
+  <p>
+    収入・資産が一定基準以下の方は、法テラス（日本司法支援センター）の民事法律扶助制度を利用することができます。<br>
+    弁護士費用の立替制度があり、毎月少額ずつの分割返済が可能です。<br>
+    また、弁護士費用保険（日常弁護士保険等）をご利用の場合も対応しております。<br>
+    詳しくはご相談の際にお気軽にお申し出ください。
+  </p>
+</div>
+
+<div style="text-align:center; margin-top: 48px;">
+  <a href="index.html#contact" style="background:var(--gold);color:var(--navy);padding:18px 48px;font-family:'Noto Serif JP',serif;font-size:0.9rem;letter-spacing:0.2em;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.3s;">相談を予約する（初回5,000円）</a>
+</div>
+</div>
+<footer>
+  <div class="footer-logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en" style="font-family:'Cormorant Garamond',serif;font-size:0.75rem;color:var(--gold-light);letter-spacing:0.2em;">Tokyo Itabashi Law Office</span>
+  </div>
+  <div class="footer-links">
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="disclaimer.html">免責事項</a>
+  </div>
+  <p class="footer-copy">© 2026 東京板橋法律事務所 All Rights Reserved.</p>
+</footer>
+</body>
+</html>

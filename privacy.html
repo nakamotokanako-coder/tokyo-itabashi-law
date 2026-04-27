@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー | 東京板橋法律事務所</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --navy-light: #2a4a8a;
+    --gold: #b8963e;
+    --gold-light: #d4b06a;
+    --silver: #8a9ab5;
+    --cream: #f5f2ec;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,31,61,0.97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,150,62,0.3);
+    padding: 0 48px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: baseline; gap: 12px; text-decoration: none; }
+  .logo-jp { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: 0.12em; }
+  .logo-en { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; color: var(--gold-light); letter-spacing: 0.2em; font-weight: 300; }
+  nav { display: flex; gap: 36px; align-items: center; }
+  nav a { font-size: 0.78rem; color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.15em; font-family: 'Noto Serif JP', serif; transition: color 0.3s; position: relative; }
+  nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+  nav a:hover { color: var(--gold-light); }
+  nav a:hover::after { transform: scaleX(1); }
+  .btn-nav-contact { background: var(--gold); color: var(--navy) !important; padding: 10px 24px; font-weight: 500; }
+  .btn-nav-contact::after { display: none !important; }
+  .btn-nav-contact:hover { background: var(--gold-light) !important; }
+
+  .page-hero {
+    margin-top: 72px;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+    padding: 72px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(42,74,138,0.4) 0%, transparent 60%);
+  }
+  .page-hero-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem; color: var(--gold); letter-spacing: 0.4em;
+    text-transform: uppercase; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 16px; position: relative;
+  }
+  .page-hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .page-hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300;
+    color: var(--white); letter-spacing: 0.1em; position: relative;
+  }
+  .breadcrumb {
+    padding: 16px 10%;
+    background: var(--cream);
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    display: flex; gap: 8px; align-items: center;
+  }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+
+  .page-content { padding: 80px 10%; max-width: 1000px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.75rem;
+    color: var(--gold); letter-spacing: 0.4em; text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300;
+    color: var(--navy); letter-spacing: 0.1em; line-height: 1.5;
+    margin-bottom: 40px;
+  }
+
+  footer {
+    background: #080f1e; padding: 40px 10%;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(184,150,62,0.15);
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { display: flex; align-items: baseline; gap: 12px; }
+  .footer-logo .logo-jp { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .notice-box {
+    background: var(--cream); border-left: 3px solid var(--gold);
+    padding: 20px 24px; margin-bottom: 48px;
+    font-size: 0.85rem; line-height: 2; color: var(--text-light);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en">Tokyo Itabashi Law Office</span>
+  </a>
+  <nav>
+    <a href="index.html#practice">取扱業務</a>
+    <a href="index.html#about">事務所紹介</a>
+    <a href="fee.html">費用</a>
+    <a href="faq.html">よくある質問</a>
+    <a href="index.html#access">アクセス</a>
+    <a href="index.html#contact" class="btn-nav-contact">相談予約</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <p class="page-hero-label">Privacy Policy</p>
+  <h1 class="page-hero-title">プライバシーポリシー</h1>
+</div>
+<div class="breadcrumb">
+  <a href="index.html">トップ</a> ＞ プライバシーポリシー
+</div>
+<div class="page-content">
+
+<style>
+  .policy-section {{ margin-bottom: 48px; }}
+  .policy-section h2 {{
+    font-family: 'Noto Serif JP', serif; font-size: 1rem;
+    font-weight: 600; color: var(--navy); letter-spacing: 0.1em;
+    border-left: 3px solid var(--gold); padding-left: 14px;
+    margin-bottom: 20px;
+  }}
+  .policy-section p, .policy-section li {{
+    font-size: 0.85rem; color: var(--text-light);
+    line-height: 2.4; letter-spacing: 0.06em;
+  }}
+  .policy-section ul {{ padding-left: 1.4em; }}
+  .policy-section li {{ margin-bottom: 4px; }}
+  .policy-date {{
+    font-size: 0.78rem; color: var(--text-light);
+    letter-spacing: 0.1em; margin-bottom: 48px;
+    padding-bottom: 24px; border-bottom: 1px solid #e8e4da;
+  }}
+</style>
+
+<p class="policy-date">制定日：○○年○○月○○日　最終改定日：○○年○○月○○日</p>
+
+<div class="policy-section">
+  <h2>1. 基本方針</h2>
+  <p>東京板橋法律事務所（以下「当事務所」）は、ご依頼者・ご相談者の個人情報の保護を重要な責務と認識し、個人情報の保護に関する法律（個人情報保護法）その他の関連法令を遵守し、個人情報を適切に取り扱います。</p>
+</div>
+
+<div class="policy-section">
+  <h2>2. 取得する個人情報</h2>
+  <p>当事務所は、以下の個人情報を取得することがあります。</p>
+  <ul>
+    <li>氏名・住所・電話番号・メールアドレス等の連絡先情報</li>
+    <li>ご相談・ご依頼の内容に関する情報</li>
+    <li>当事務所へのお問い合わせフォームにご入力いただいた情報</li>
+    <li>その他、業務遂行に必要な情報</li>
+  </ul>
+</div>
+
+<div class="policy-section">
+  <h2>3. 利用目的</h2>
+  <p>取得した個人情報は、以下の目的のために利用します。</p>
+  <ul>
+    <li>法律相談・案件処理・依頼業務の遂行</li>
+    <li>ご相談・お問い合わせへの回答・連絡</li>
+    <li>相談予約の確認・調整</li>
+    <li>法令に基づく手続き</li>
+    <li>当事務所のサービス改善・情報提供（ご同意いただいた場合）</li>
+  </ul>
+</div>
+
+<div class="policy-section">
+  <h2>4. 第三者提供</h2>
+  <p>当事務所は、以下の場合を除き、ご本人の同意なく個人情報を第三者に提供しません。</p>
+  <ul>
+    <li>法令に基づく場合</li>
+    <li>人の生命・身体・財産の保護のために必要な場合</li>
+    <li>業務委託先への提供（守秘義務を負わせた上で）</li>
+    <li>弁護士法その他の法令上必要な場合</li>
+  </ul>
+</div>
+
+<div class="policy-section">
+  <h2>5. 安全管理措置</h2>
+  <p>当事務所は、取得した個人情報の漏洩・滅失・毀損の防止その他個人情報の安全管理のために、必要かつ適切な措置を講じます。また、個人情報を取り扱う役職員に対し、適切な監督を行います。</p>
+</div>
+
+<div class="policy-section">
+  <h2>6. 開示・訂正・削除の請求</h2>
+  <p>ご本人は、当事務所が保有する自己の個人情報について、開示・訂正・削除・利用停止を請求することができます。ご請求の際は、下記お問い合わせ先までご連絡ください。なお、弁護士法上の守秘義務等により開示できない場合があります。</p>
+</div>
+
+<div class="policy-section">
+  <h2>7. Cookieの利用</h2>
+  <p>当サイトでは、サービス向上のためCookieを使用することがあります。ブラウザの設定によりCookieを無効にすることが可能ですが、一部機能がご利用いただけなくなる場合があります。</p>
+</div>
+
+<div class="policy-section">
+  <h2>8. お問い合わせ</h2>
+  <p>個人情報の取り扱いに関するお問い合わせは、下記までご連絡ください。</p>
+  <p style="margin-top:16px;">
+    東京板橋法律事務所<br>
+    〒173-0013 東京都板橋区板橋2丁目62-5<br>
+    TEL：03-3963-6171<br>
+    受付時間：平日 9:00〜18:00
+  </p>
+</div>
+</div>
+<footer>
+  <div class="footer-logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en" style="font-family:'Cormorant Garamond',serif;font-size:0.75rem;color:var(--gold-light);letter-spacing:0.2em;">Tokyo Itabashi Law Office</span>
+  </div>
+  <div class="footer-links">
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="disclaimer.html">免責事項</a>
+  </div>
+  <p class="footer-copy">© 2026 東京板橋法律事務所 All Rights Reserved.</p>
+</footer>
+</body>
+</html>
