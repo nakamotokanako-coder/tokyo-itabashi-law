@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>解決事例 | 東京板橋法律事務所</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d; --navy-mid: #1a3260; --gold: #b8963e; --gold-light: #d4b06a;
+    --cream: #f5f2ec; --cream-dark: #ede9e0; --white: #ffffff;
+    --text: #1a1a2e; --text-light: #5a6478;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.8; }
+
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,31,61,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,150,62,0.3); padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: baseline; gap: 12px; text-decoration: none; }
+  .logo-jp { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: 0.12em; }
+  .logo-en { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; color: var(--gold-light); letter-spacing: 0.2em; font-weight: 300; }
+  nav { display: flex; gap: 36px; align-items: center; }
+  nav a { font-size: 0.78rem; color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.15em; font-family: 'Noto Serif JP', serif; transition: color 0.3s; position: relative; }
+  nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+  nav a:hover { color: var(--gold-light); }
+  nav a:hover::after { transform: scaleX(1); }
+  .btn-nav-contact { background: var(--gold); color: var(--navy) !important; padding: 10px 24px; font-weight: 500; }
+  .btn-nav-contact::after { display: none !important; }
+  .btn-nav-contact:hover { background: var(--gold-light) !important; }
+
+  .page-hero { margin-top: 72px; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 80px 10%; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(42,74,138,0.4) 0%, transparent 60%); }
+  .page-hero-label { font-family: 'Cormorant Garamond', serif; font-size: 0.78rem; color: var(--gold); letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 16px; position: relative; }
+  .page-hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .page-hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--white); letter-spacing: 0.1em; position: relative; }
+
+  .breadcrumb { padding: 14px 10%; background: var(--cream); font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.08em; display: flex; gap: 8px; align-items: center; border-bottom: 1px solid var(--cream-dark); }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 72px 5% 100px; }
+
+  .notice { display: flex; gap: 16px; align-items: flex-start; background: var(--cream); border-left: 3px solid var(--gold); padding: 20px 24px; margin-bottom: 56px; font-size: 0.84rem; color: var(--text-light); line-height: 1.9; letter-spacing: 0.04em; }
+  .notice-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+
+  /* FILTER TABS */
+  .filter-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 48px; }
+  .filter-btn { padding: 8px 20px; border: 1px solid var(--cream-dark); background: var(--white); font-family: 'Noto Serif JP', serif; font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.1em; cursor: pointer; transition: all 0.25s; }
+  .filter-btn:hover { border-color: var(--gold); color: var(--navy); }
+  .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  /* CASES GRID */
+  .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 64px; }
+
+  .case-card { border: 1px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+  .case-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(15,31,61,0.1); }
+  .case-card.hidden { display: none; }
+
+  .case-header { background: var(--navy); padding: 20px 24px; position: relative; overflow: hidden; }
+  .case-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+  .case-tag { display: inline-block; background: rgba(184,150,62,0.2); border: 1px solid rgba(184,150,62,0.4); color: var(--gold-light); font-size: 0.68rem; letter-spacing: 0.2em; padding: 3px 10px; margin-bottom: 12px; font-family: 'Cormorant Garamond', serif; }
+  .case-title { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 600; color: var(--white); letter-spacing: 0.08em; line-height: 1.6; }
+
+  .case-body { padding: 24px; background: var(--white); }
+  .case-result { display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--cream-dark); }
+  .case-result-label { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.15em; font-family: 'Cormorant Garamond', serif; flex-shrink: 0; }
+  .case-result-value { font-family: 'Noto Serif JP', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); letter-spacing: 0.06em; }
+
+  .case-meta { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .case-meta-row { display: flex; gap: 8px; align-items: flex-start; }
+  .case-meta-key { font-size: 0.68rem; color: var(--text-light); letter-spacing: 0.15em; flex-shrink: 0; padding-top: 2px; min-width: 52px; }
+  .case-meta-val { font-size: 0.8rem; color: var(--text); letter-spacing: 0.04em; line-height: 1.6; }
+
+  .case-summary { font-size: 0.82rem; color: var(--text-light); line-height: 1.9; letter-spacing: 0.04em; }
+
+  .case-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; font-family: 'Cormorant Garamond', serif; cursor: pointer; transition: gap 0.3s; }
+  .case-more:hover { gap: 10px; }
+  .case-more::after { content: '→'; }
+
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(10,20,40,0.7); z-index: 200; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal { background: var(--white); width: 90%; max-width: 680px; max-height: 85vh; overflow-y: auto; position: relative; transform: translateY(24px); transition: transform 0.3s; }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-header { background: var(--navy); padding: 32px 40px; position: relative; }
+  .modal-tag { display: inline-block; background: rgba(184,150,62,0.2); border: 1px solid rgba(184,150,62,0.4); color: var(--gold-light); font-size: 0.68rem; letter-spacing: 0.2em; padding: 3px 10px; margin-bottom: 12px; font-family: 'Cormorant Garamond', serif; }
+  .modal-title { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: 600; color: var(--white); letter-spacing: 0.08em; line-height: 1.6; }
+  .modal-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.5); font-size: 1.4rem; cursor: pointer; transition: color 0.3s; line-height: 1; }
+  .modal-close:hover { color: var(--white); }
+  .modal-body { padding: 36px 40px; }
+  .modal-result { background: var(--cream); border-left: 3px solid var(--gold); padding: 16px 20px; margin-bottom: 28px; }
+  .modal-result-label { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.2em; font-family: 'Cormorant Garamond', serif; margin-bottom: 4px; }
+  .modal-result-value { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy); }
+  .modal-section { margin-bottom: 24px; }
+  .modal-section-title { font-family: 'Noto Serif JP', serif; font-size: 0.85rem; font-weight: 600; color: var(--navy); letter-spacing: 0.1em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .modal-section-title::before { content: ''; display: block; width: 3px; height: 14px; background: var(--gold); flex-shrink: 0; }
+  .modal-section p { font-size: 0.85rem; color: var(--text-light); line-height: 2.1; letter-spacing: 0.04em; }
+  .modal-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .modal-meta-item { background: var(--cream); padding: 12px 16px; }
+  .modal-meta-key { font-size: 0.68rem; color: var(--text-light); letter-spacing: 0.15em; margin-bottom: 4px; }
+  .modal-meta-val { font-size: 0.85rem; color: var(--navy); font-weight: 500; letter-spacing: 0.06em; }
+
+  .section-divider { height: 1px; background: var(--cream-dark); margin: 56px 0; }
+
+  .cta-wrap { text-align: center; }
+  .cta-btn { display: inline-block; background: var(--gold); color: var(--navy); padding: 18px 56px; font-family: 'Noto Serif JP', serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.2em; text-decoration: none; transition: all 0.3s; }
+  .cta-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,150,62,0.25); }
+  .cta-sub { font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.1em; margin-top: 16px; }
+
+  footer { background: #080f1e; padding: 40px 10%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(184,150,62,0.15); flex-wrap: wrap; gap: 16px; }
+  .footer-logo { display: flex; align-items: baseline; gap: 12px; }
+  .footer-logo .logo-jp { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en">Tokyo Itabashi Law Office</span>
+  </a>
+  <nav>
+    <a href="index.html#practice">取扱業務</a>
+    <a href="index.html#about">事務所紹介</a>
+    <a href="cases.html">解決事例</a>
+    <a href="fee.html">費用</a>
+    <a href="faq.html">よくある質問</a>
+    <a href="index.html#access">アクセス</a>
+    <a href="reservation.html" class="btn-nav-contact">相談予約</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <p class="page-hero-label">Case Results</p>
+  <h1 class="page-hero-title">解決事例</h1>
+</div>
+<div class="breadcrumb">
+  <a href="index.html">トップ</a> ＞ 解決事例
+</div>
+
+<div class="page-wrap">
+
+  <div class="notice">
+    <span class="notice-icon">🔒</span>
+    <span>掲載している事例はすべて依頼者の方のご了承を得たうえで、個人が特定されないよう情報を加工しています。解決金額・条件は事案によって異なります。</span>
+  </div>
+
+  <div class="filter-nav">
+    <button class="filter-btn active" data-filter="all">すべて</button>
+    <button class="filter-btn" data-filter="divorce">離婚・男女問題</button>
+    <button class="filter-btn" data-filter="inheritance">相続・遺言</button>
+    <button class="filter-btn" data-filter="debt">債務整理</button>
+    <button class="filter-btn" data-filter="realestate">不動産</button>
+    <button class="filter-btn" data-filter="corporate">企業法務</button>
+  </div>
+
+  <div class="cases-grid" id="casesGrid">
+
+    <!-- CASE 1 -->
+    <div class="case-card" data-cat="divorce" data-index="0">
+      <div class="case-header">
+        <span class="case-tag">離婚・男女問題</span>
+        <p class="case-title">不貞行為により離婚。財産分与と慰謝料を同時解決</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">財産分与＋慰謝料 ○○万円獲得</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">40代 女性</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">調停離婚</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約8ヶ月</span></div>
+        </div>
+        <p class="case-summary">夫の不貞行為が発覚し離婚を決意。当初、夫側は慰謝料の支払いを拒否していたが、証拠収集のアドバイスと粘り強い交渉により解決。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="case-card" data-cat="inheritance" data-index="1">
+      <div class="case-header">
+        <span class="case-tag">相続・遺言</span>
+        <p class="case-title">遺産分割協議が難航。不動産を含む相続問題を解決</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">法定相続分を確保。不動産売却益○○万円</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">50代 男性</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">遺産分割調停</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約1年2ヶ月</span></div>
+        </div>
+        <p class="case-summary">兄弟間で遺産分割がまとまらず、不動産の扱いで対立。調停を通じて公平な分割を実現し、売却益を法定相続分どおり確保した。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="case-card" data-cat="debt" data-index="2">
+      <div class="case-header">
+        <span class="case-tag">債務整理</span>
+        <p class="case-title">複数社から借入○○万円。任意整理で月々の返済を大幅圧縮</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">利息カットにより返済総額○○万円減</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">30代 男性</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">任意整理</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約4ヶ月</span></div>
+        </div>
+        <p class="case-summary">5社から総額○○万円の借入。毎月の返済が限界に達し相談。任意整理により利息をカットし、無理のない分割払いに変更することができた。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+    <!-- CASE 4 -->
+    <div class="case-card" data-cat="realestate" data-index="3">
+      <div class="case-header">
+        <span class="case-tag">不動産・建築</span>
+        <p class="case-title">家賃滞納が続く入居者への明渡し請求を解決</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">滞納家賃○○万円回収・明渡し完了</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">60代 男性（オーナー）</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">交渉→訴訟</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約6ヶ月</span></div>
+        </div>
+        <p class="case-summary">半年以上の家賃滞納が続き、交渉も無視される状況。内容証明送付・訴訟提起を経て明渡しと滞納家賃の一部回収を実現した。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+    <!-- CASE 5 -->
+    <div class="case-card" data-cat="divorce" data-index="4">
+      <div class="case-header">
+        <span class="case-tag">離婚・男女問題</span>
+        <p class="case-title">DVを受けた依頼者の離婚と親権獲得を支援</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">親権獲得・保護命令申立て・離婚成立</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">30代 女性</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">保護命令＋調停</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約10ヶ月</span></div>
+        </div>
+        <p class="case-summary">夫からのDVにより避難を余儀なくされた依頼者。保護命令の申立て支援から始まり、子どもの親権獲得と離婚成立まで一貫してサポートした。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+    <!-- CASE 6 -->
+    <div class="case-card" data-cat="corporate" data-index="5">
+      <div class="case-header">
+        <span class="case-tag">企業法務</span>
+        <p class="case-title">元従業員からの不当解雇訴訟に対応し和解解決</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">会社側の主張が認められ低額和解成立</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">中小企業（板橋区）</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">労働審判→訴訟和解</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約8ヶ月</span></div>
+        </div>
+        <p class="case-summary">問題行動を理由に解雇した元従業員から不当解雇として訴えられた。懲戒処分の正当性を立証し、当初請求額の大幅減額での和解を実現。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+    <!-- CASE 7 -->
+    <div class="case-card" data-cat="inheritance" data-index="6">
+      <div class="case-header">
+        <span class="case-tag">相続・遺言</span>
+        <p class="case-title">遺留分侵害額請求により正当な相続分を回復</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">遺留分侵害額○○万円を回収</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">40代 女性</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">交渉による和解</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約5ヶ月</span></div>
+        </div>
+        <p class="case-summary">父の遺言書により財産のほぼ全額が兄に渡ることに。遺留分侵害額請求を行い、交渉で兄側と合意。訴訟を経ずに○○万円を回収した。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+    <!-- CASE 8 -->
+    <div class="case-card" data-cat="debt" data-index="7">
+      <div class="case-header">
+        <span class="case-tag">債務整理</span>
+        <p class="case-title">住宅を手放さずに借金を大幅圧縮。個人再生で生活再建</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">借金○○万円を○○万円に圧縮・自宅維持</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">40代 男性</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">個人再生（住宅特則）</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約1年</span></div>
+        </div>
+        <p class="case-summary">事業の失敗で借金が膨らんだが、自宅だけは残したかった依頼者。個人再生の住宅ローン特則を活用し、自宅を維持しながら借金を大幅に減額した。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+    <!-- CASE 9 -->
+    <div class="case-card" data-cat="realestate" data-index="8">
+      <div class="case-header">
+        <span class="case-tag">不動産・建築</span>
+        <p class="case-title">欠陥住宅の補修費用を売主・施工業者から回収</p>
+      </div>
+      <div class="case-body">
+        <div class="case-result">
+          <span class="case-result-label">Result</span>
+          <span class="case-result-value">補修費用・損害賠償 ○○万円を獲得</span>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row"><span class="case-meta-key">依頼者</span><span class="case-meta-val">30代 夫婦</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">解決方法</span><span class="case-meta-val">訴訟</span></div>
+          <div class="case-meta-row"><span class="case-meta-key">期間</span><span class="case-meta-val">約1年4ヶ月</span></div>
+        </div>
+        <p class="case-summary">新築購入後に雨漏り・基礎のひび割れが発覚。売主・施工業者ともに対応を拒否したため訴訟へ。専門家の鑑定を活用し補修費用を全額回収した。</p>
+        <span class="case-more">詳細を見る</span>
+      </div>
+    </div>
+
+  </div><!-- /cases-grid -->
+
+  <div class="section-divider"></div>
+  <div class="cta-wrap">
+    <a href="reservation.html" class="cta-btn">相談を予約する</a>
+    <p class="cta-sub">初回相談 5,000円（税込）・秘密厳守</p>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <span class="modal-tag" id="modalTag"></span>
+      <p class="modal-title" id="modalTitle"></p>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-result">
+        <p class="modal-result-label">RESULT</p>
+        <p class="modal-result-value" id="modalResult"></p>
+      </div>
+      <div class="modal-meta-grid" id="modalMeta"></div>
+      <div class="modal-section">
+        <p class="modal-section-title">ご相談の背景</p>
+        <p id="modalBackground"></p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-title">当事務所の対応</p>
+        <p id="modalApproach"></p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-section-title">解決のポイント</p>
+        <p id="modalPoint"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <span class="logo-jp">東京板橋法律事務所</span>
+    <span class="logo-en" style="font-family:'Cormorant Garamond',serif;font-size:0.75rem;color:var(--gold-light);letter-spacing:0.2em;">Tokyo Itabashi Law Office</span>
+  </div>
+  <div class="footer-links">
+    <a href="fee.html">弁護士費用</a>
+    <a href="faq.html">よくある質問</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="disclaimer.html">免責事項</a>
+  </div>
+  <p class="footer-copy">© 2026 東京板橋法律事務所 All Rights Reserved.</p>
+</footer>
+
+<script>
+const caseDetails = [
+  {
+    tag: '離婚・男女問題', title: '不貞行為により離婚。財産分与と慰謝料を同時解決',
+    result: '財産分与＋慰謝料 ○○万円獲得',
+    meta: [['依頼者','40代 女性'],['解決方法','調停離婚'],['期間','約8ヶ月'],['担当','中本 源太郎']],
+    background: '婚姻10年以上の夫婦。夫の不貞行為が発覚し、依頼者は離婚を決意。しかし夫側は不貞の事実を否定し、慰謝料の支払いも拒否。財産分与についても財産の開示を拒んでいた。',
+    approach: '不貞の証拠となる連絡記録・写真等の収集方法をアドバイス。財産調査として預金照会・不動産調査を行い、夫が隠していた財産を特定。調停において証拠に基づいた主張を展開し、慰謝料と財産分与を同時に解決した。',
+    point: '証拠の保全と財産調査を早期に行ったことが交渉の決め手となった。相手方が事実を否定している場合でも、適切な証拠があれば有利な解決が可能です。'
+  },
+  {
+    tag: '相続・遺言', title: '遺産分割協議が難航。不動産を含む相続問題を解決',
+    result: '法定相続分を確保。不動産売却益○○万円',
+    meta: [['依頼者','50代 男性'],['解決方法','遺産分割調停'],['期間','約1年2ヶ月'],['担当','中本 源太郎']],
+    background: '父が亡くなり、遺産は自宅不動産と預金。兄が「自分が介護していた」として全財産を取得しようとした。依頼者は法定相続分の確保を求めたが、兄との話し合いが完全に決裂した。',
+    approach: '遺産分割調停を申立て。介護の寄与分について法的な評価を行い、兄の主張が法律上認められる範囲を明確化。不動産については不動産鑑定士の意見も取り入れながら交渉し、売却のうえ法定相続分どおりの分配を実現した。',
+    point: '感情的になりがちな相続トラブルこそ、早期に法的な整理をすることが重要。「介護したから全部もらえる」は法律上認められないケースがほとんどです。'
+  },
+  {
+    tag: '債務整理', title: '複数社から借入○○万円。任意整理で月々の返済を大幅圧縮',
+    result: '利息カットにより返済総額○○万円減',
+    meta: [['依頼者','30代 男性'],['解決方法','任意整理'],['期間','約4ヶ月'],['担当','中本 理一郎']],
+    background: '消費者金融5社から総額○○万円の借入があり、毎月の最低返済額だけで○○万円超。生活費が不足しリボ払いでさらに借入が増える状態だった。',
+    approach: '5社すべてに受任通知を送付し返済をストップ。各社と個別に交渉し、将来の利息をカットした分割払いの和解を成立させた。月々の返済額を約半分に圧縮し、3年での完済計画を立てた。',
+    point: '任意整理は裁判所を使わないため手続きが比較的早く、ブラックリストへの影響も限定的。早めの相談が借金の悪化を防ぐ最善策です。'
+  },
+  {
+    tag: '不動産・建築', title: '家賃滞納が続く入居者への明渡し請求を解決',
+    result: '滞納家賃○○万円回収・明渡し完了',
+    meta: [['依頼者','60代 男性（オーナー）'],['解決方法','交渉→訴訟'],['期間','約6ヶ月'],['担当','中本 源太郎']],
+    background: '賃貸マンションの入居者が半年以上家賃を滞納。連絡しても無視され、内容証明を送っても反応なし。オーナー自身での解決が困難になり相談に来た。',
+    approach: '受任後すぐに内容証明郵便を送付し、応答がないため建物明渡請求訴訟を提起。判決後は強制執行の手続きも視野に入れて交渉したところ、入居者側が任意退去に応じ、滞納家賃の一部も回収できた。',
+    point: '家賃滞納は放置するほど解決が難しくなります。2〜3ヶ月の滞納が続いた段階での相談が最も効果的です。'
+  },
+  {
+    tag: '離婚・男女問題', title: 'DVを受けた依頼者の離婚と親権獲得を支援',
+    result: '親権獲得・保護命令申立て・離婚成立',
+    meta: [['依頼者','30代 女性'],['解決方法','保護命令＋調停'],['期間','約10ヶ月'],['担当','中本 源太郎']],
+    background: '夫から継続的にDVを受け、子ども2人を連れて実家へ避難。夫は「子どもを返せ」と連絡を繰り返し、依頼者は精神的に追い詰められていた。',
+    approach: '緊急で接近禁止・退去命令の保護命令申立てを行い認容。安全を確保した上で離婚調停を申立て。DVの証拠（診断書・写真・通話記録）を整理し、子どもの監護状況を丁寧に主張した結果、親権・養育費ともに依頼者側の主張が認められた。',
+    point: 'DVがある場合は安全確保が最優先。証拠の保全も重要で、病院の診断書・写真・音声記録があると調停・裁判で大きな力になります。'
+  },
+  {
+    tag: '企業法務', title: '元従業員からの不当解雇訴訟に対応し和解解決',
+    result: '会社側の主張が認められ低額和解成立',
+    meta: [['依頼者','中小企業（板橋区）'],['解決方法','労働審判→訴訟和解'],['期間','約8ヶ月'],['担当','中本 理一郎']],
+    background: '勤務態度不良・無断欠勤を繰り返す従業員を解雇したところ、不当解雇として労働審判を申立てられた。会社側は証拠書類の整理ができておらず、対応に苦慮していた。',
+    approach: '就業規則・人事記録・注意指導の記録を整理し、解雇の正当性を裏付ける証拠を構築。労働審判では会社側の主張が概ね認められたが、相手方が審判に不服申立て。訴訟においても同様の主張を維持し、当初請求額の大幅減額での和解を成立させた。',
+    point: '労務トラブルは日常の記録が何より重要。注意指導は口頭だけでなく書面で行い、記録を残すことが紛争予防と解決の両面で有効です。'
+  },
+  {
+    tag: '相続・遺言', title: '遺留分侵害額請求により正当な相続分を回復',
+    result: '遺留分侵害額○○万円を回収',
+    meta: [['依頼者','40代 女性'],['解決方法','交渉による和解'],['期間','約5ヶ月'],['担当','中本 源太郎']],
+    background: '父が亡くなり遺言書が発見されたが、ほぼ全財産が兄に渡る内容。依頼者には最低限の遺留分がある旨を説明し、請求を決意した。',
+    approach: '相続財産の調査を行い遺留分侵害額を計算。兄側の代理人弁護士と交渉し、訴訟を経ることなく合意を成立させた。相続財産の評価をめぐる争いがあったが、不動産鑑定の数値を根拠に粘り強く交渉した。',
+    point: '遺留分侵害額請求には相続を知った日から1年間の時効があります。遺言内容に納得できない場合は早期にご相談ください。'
+  },
+  {
+    tag: '債務整理', title: '住宅を手放さずに借金を大幅圧縮。個人再生で生活再建',
+    result: '借金○○万円を○○万円に圧縮・自宅維持',
+    meta: [['依頼者','40代 男性'],['解決方法','個人再生（住宅特則）'],['期間','約1年'],['担当','中本 理一郎']],
+    background: '自営業の失敗で複数の借入が膨らみ、返済が不可能な状況に。自己破産を検討したが、家族が住む自宅だけは残したいという強い希望があった。',
+    approach: '個人再生手続きの中でも住宅ローン特則を活用するプランを提案。裁判所への申立書類の作成から再生計画案の策定まで一貫してサポート。住宅ローン以外の借金を大幅に圧縮しながら、自宅を維持したまま生活再建の道を開いた。',
+    point: '「自己破産しかない」と思い込んでいる方でも、個人再生が適している場合があります。特に持ち家がある方はぜひご相談ください。'
+  },
+  {
+    tag: '不動産・建築', title: '欠陥住宅の補修費用を売主・施工業者から回収',
+    result: '補修費用・損害賠償 ○○万円を獲得',
+    meta: [['依頼者','30代 夫婦'],['解決方法','訴訟'],['期間','約1年4ヶ月'],['担当','中本 源太郎']],
+    background: '新築一戸建てを購入後まもなく、雨漏りと基礎のひび割れが発覚。売主・施工業者に連絡したが「経年劣化だ」と補修を拒否され、泣き寝入りしそうになっていた。',
+    approach: '建築士の調査により施工不良であることを証明する鑑定書を取得。売主・施工業者双方を被告として損害賠償請求訴訟を提起。専門家証人の意見を効果的に活用し、補修費用相当額の全額と慰謝料を獲得した。',
+    point: '欠陥住宅は専門家による調査が解決の鍵。「自分では判断できない」という段階でも早めにご相談いただくことをお勧めします。'
+  }
+];
+
+// フィルター
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.case-card').forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// モーダル
+document.querySelectorAll('.case-more').forEach((btn, i) => {
+  btn.addEventListener('click', () => openModal(i));
+});
+document.querySelectorAll('.case-card').forEach((card, i) => {
+  card.addEventListener('click', () => openModal(parseInt(card.dataset.index)));
+});
+
+function openModal(i) {
+  const d = caseDetails[i];
+  document.getElementById('modalTag').textContent = d.tag;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalResult').textContent = d.result;
+  document.getElementById('modalMeta').innerHTML = d.meta.map(([k,v]) =>
+    `<div class="modal-meta-item"><p class="modal-meta-key">${k}</p><p class="modal-meta-val">${v}</p></div>`
+  ).join('');
+  document.getElementById('modalBackground').textContent = d.background;
+  document.getElementById('modalApproach').textContent = d.approach;
+  document.getElementById('modalPoint').textContent = d.point;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
